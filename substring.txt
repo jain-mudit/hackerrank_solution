@@ -1,0 +1,19 @@
+// given a string, find a substring from index a to index b.
+
+import java.util.*;
+public class Solution {
+
+public static void main(String[] args){
+
+Scanner sc = new Scanner(System.in);
+String st = sc.next();
+int a = sc.nextInt();
+int b = sc.nextInt();
+String op="";
+for( i=a;i<b;i++){
+ op += st.charAt(i);
+}
+
+System.out.println(op);
+}
+}

@@ -1,0 +1,67 @@
+// Java anagram : check whether two strings contain all the same characters in the same frequencies.
+
+import java.util.Scanner;
+
+public class Solution {
+
+public static boolean isAnagram(String a , String b){
+
+int[] arr = new int[26];
+int ascii;
+
+    for( int i=0; i< arr.length; i++) {
+arr[i]=0;
+}
+
+// create an array of length 26, initialize all to zero.
+// if a or A arrive at ith position increment the a[0] by 1.
+// similarly increase a[25] by 1 if character at ith position is z or Z
+
+for( int i=0;i<a.length();i++) {
+ascii= a.charAt(i);
+if(ascii >= 97)
+ arr[ascii - 97]++;
+else
+ arr[ascii - 65] ++;
+// 65 for A and 97 for a
+}
+
+// now read each character of second string and decrease corrosponding 
+// value in array by 1 according to character read
+
+for( int i=0;i<b.length();i++) {
+ascii= b.charAt(i);
+if(ascii >= 97)
+ arr[ascii - 97]--;
+else
+ arr[ascii - 65] --;
+// 65 for A and 97 for a
+}
+
+
+int p=1;
+
+// if two strings are anagram all the element of array should be zero
+
+for( int i=0; i< arr.length; i++) {
+if(arr[i] != 0) {
+ p=0;
+ break;
+}
+}
+
+boolean bo= (p==1);
+return bo;
+}
+
+
+    public static void main(String[] args) {
+    
+        Scanner scan = new Scanner(System.in);
+        String a = scan.next();
+        String b = scan.next();
+        scan.close();
+        boolean ret = isAnagram(a, b);
+        System.out.println( (ret) ? "Anagrams" : "Not Anagrams" );
+    }
+}
